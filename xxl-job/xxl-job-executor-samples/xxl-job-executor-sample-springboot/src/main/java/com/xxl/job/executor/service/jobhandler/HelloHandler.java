@@ -1,5 +1,7 @@
 package com.xxl.job.executor.service.jobhandler;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.handler.IJobHandler;
 import com.xxl.job.core.handler.annotation.JobHandler;
@@ -26,15 +28,17 @@ public class HelloHandler  extends IJobHandler {
 //        XxlJobLogger.log("XXL-JOB, Hello World.");
 
 
+
+
         logger.info("XXL-JOB, Hello World."+param);
+        JSONObject jsonObject = JSON.parseObject(param);
+
+        System.out.println(JSON.toJSON(param));
 
 //		for (int i = 0; i < 5; i++) {
 //			XxlJobLogger.log("beat at:" + i);
 //			TimeUnit.SECONDS.sleep(2);
 //		}
-
-
-
         return SUCCESS;
     }
 

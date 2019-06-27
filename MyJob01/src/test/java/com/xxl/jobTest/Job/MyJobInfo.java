@@ -1,4 +1,4 @@
-package com.xxl.jobTest;
+package com.xxl.jobTest.Job;
 
 import java.util.Date;
 

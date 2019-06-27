@@ -13,6 +13,7 @@ import com.xxl.job.core.enums.ExecutorBlockStrategyEnum;
 import com.xxl.job.core.glue.GlueTypeEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -56,13 +57,15 @@ public class JobInfoController {
 	public Map<String, Object> pageList(@RequestParam(required = false, defaultValue = "0") int start,  
 			@RequestParam(required = false, defaultValue = "10") int length,
 			int jobGroup, String jobDesc, String executorHandler, String filterTime) {
-		System.out.println("-------------断点调试----------------------");
+
 		return xxlJobService.pageList(start, length, jobGroup, jobDesc, executorHandler, filterTime);
 	}
 	
 	@RequestMapping("/add")
 	@ResponseBody
-	public ReturnT<String> add(XxlJobInfo jobInfo) {
+	@PermessionLimit(limit = false)
+	public ReturnT<String> add(@RequestBody  XxlJobInfo jobInfo) {
+		System.out.println("-------------进入job添加代码----------------------");
 		return xxlJobService.add(jobInfo);
 	}
 	
@@ -86,7 +89,10 @@ public class JobInfoController {
 	
 	@RequestMapping("/start")
 	@ResponseBody
+	@PermessionLimit(limit = false)
 	public ReturnT<String> start(int id) {
+		System.out.println("进入调式启动模块");
+
 		return xxlJobService.start(id);
 	}
 	
