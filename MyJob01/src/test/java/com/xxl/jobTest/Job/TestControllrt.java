@@ -37,6 +37,10 @@ public class TestControllrt {
 //        httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 2000);
 
 
+    public static  void getExecuter(){
+
+    }
+
     /**
      * 手动增加定时任务
      */
